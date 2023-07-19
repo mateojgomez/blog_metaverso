@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %}
+<title>Administrar Noticias</title>
+{% endblock %}
+
+{% block navegacion %}
+{% include 'navegacion.html' %}
+{% endblock %}
+
+{% block administrar_noticias %}
+
+<button>
+    
+</button>
+
+<div class="card text-bg-dark">
+    <img class="card-img" src="{% static 'img/metaversociudad.jpeg' %}" alt="libreria">
+<div class="card-img-overlay">
+    <h3
+        style="color: rgb(228, 227, 227); text-align: center; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+        Esta es una aplicacion para compartir informacion en relacion al METAVERSO.
+    </h3>
+    <h4
+        style="text-align: center">
+        Vas a encontrar  publicaciones relacionadas a este tema.
+    </h4>
+    <h5
+        style="text-align: center"> 
+        Para poder publicar necesitas estar registrado.
+    </h5>
+</div>
+</div>
+</div>
+
+
+{% endblock %}
+
