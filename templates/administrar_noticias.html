@@ -8,11 +8,11 @@
 {% include 'navegacion.html' %}
 {% endblock %}
 
-{% block administrar_noticias %}
+{% block contenido %}
 
-<button>
-    
-</button>
+<a href={% url 'administrar_noticias' %}>
+    <button type="button" class="btn btn-primary">agregar noticia</button>  
+</a>
 
 <div class="card text-bg-dark">
     <img class="card-img" src="{% static 'img/metaversociudad.jpeg' %}" alt="libreria">
