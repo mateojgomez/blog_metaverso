@@ -7,6 +7,10 @@ from .views import index
 from .views import registrarse
 from .views import administrar_noticias
 from .views import administrar_categorias
+from apps.noticias.views import agregar_noticias
+
+
+
 
 
 urlpatterns = [
@@ -14,5 +18,6 @@ urlpatterns = [
     path('index/',index , name='index'),
     path('registrarse/',registrarse, name='registrarse'),
     path('administrar/noticias',administrar_noticias,name='administrar_noticias'),
-    path('administrar/categorias',administrar_categorias,name='administrar_categorias')
+    path('administrar/categorias',administrar_categorias,name='administrar_categorias'),
+    path('administrar/noticias/agregar_noticias', agregar_noticias ,name='agregar_noticias')
 ]

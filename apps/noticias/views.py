@@ -1,13 +1,6 @@
-from django.urls import reverse_lazy
-from django.views.generic import CreateView
-from .models import Noticias
-from .forms import Administrar_noticias_Form
+from django.shortcuts import render
 
-# Create your views here.
 
-class RegistrarUsuario(CreateView):
-    model = Noticias
-    template_name = 'administrar_noticias.html'
-    form_class = Administrar_noticias_Form
-    success_url = reverse_lazy('inicio')
-    
+def agregar_noticias(request):
+    template_name='agregar_noticias.html'
+    return render(request,template_name)
