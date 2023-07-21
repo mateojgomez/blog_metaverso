@@ -1,2 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
 
-agregar noticiasnvbkhvblkjbvljblj
+{%block titulo%} Agregar noticia {%endblock%}
+
+{%block contenido%}
+<div class="card">
+    <div class="card-header">
+        Crear una noticia
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos</h4>
+        
+    {% include 'form.html' %}
+
+    </div>
+    <div class="card-footer text-muted">
+        Footer
+    </div>
+</div>
+
+{%endblock%}
+

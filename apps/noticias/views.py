@@ -1,6 +1,15 @@
-from django.shortcuts import render
+from django.http import HttpRequest
+from django.shortcuts import render, redirect
+from .forms import FormNoticia
 
+def noticia(request):
+    noticias = noticias.objects.all()
+    return render (request, 'agregar_noticias.html',{'noticias': noticias})
 
-def agregar_noticias(request):
-    template_name='agregar_noticias.html'
-    return render(request,template_name)
+def AgregarNoticia(request):
+    formulario = FormNoticia(request.POST or None,request.FILES or None)
+    if formulario.is_valid():
+        formulario.save()
+        return redirect('index')
+    return render(request,'agregar_noticias.html',{'formulario': formulario})
+   

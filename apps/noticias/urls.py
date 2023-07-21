@@ -1,8 +1,8 @@
-from django.contrib import admin
+from apps.noticias import views
 from django.urls import path
-from .views import agregar_noticias
+from .views import AgregarNoticia
 
 urlpatterns = [
-    path('administrar/noticias/agregar_noticias', agregar_noticias ,name='agregar_noticias'),
+    path('agregar_noticias', views.AgregarNoticia ,name='agregar_noticias'),
 ]
 
