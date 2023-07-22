@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block titulo %}
+<title>Publicaciones</title>
+{% endblock %}
+{% block navegacion %}
+{% include 'navegacion.html' %}
+{% endblock %}
+{% block contenido %}
+
+{% for i in noticias %}
+        
+<br>
+<li>{{i.titulo}}/
+{{i.fecha}}/
+{{i.categoria}}
+</li>
+
+{% empty %}
+<hi> No hay publicaciones </h1>
+
+{% endfor %}
+
+{%endblock%}

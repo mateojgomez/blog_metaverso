@@ -8,7 +8,7 @@ from .views import registrarse
 from .views import administrar_noticias
 from .views import administrar_categorias
 from apps.noticias.views import AgregarNoticia
-
+#from .views import publicaciones
 
 
 
@@ -22,7 +22,7 @@ urlpatterns = [
     path('registrarse/',registrarse, name='registrarse'),
     #Ceci incluye las paths de las apps
     path('noticias/', include('apps.noticias.urls')),
-    path('usuarios/', include('apps.usuarios.urls')),
+   # path('publicaciones/', publicaciones, name= 'publicaciones'),
     path('administrar/noticias',administrar_noticias,name='administrar_noticias'),
     path('administrar/categorias',administrar_categorias,name='administrar_categorias'),
     path('administrar/noticias/agregar_noticias', AgregarNoticia,name='agregar_noticias')

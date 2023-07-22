@@ -84,7 +84,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'app_blog_metaverso',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': 'neimon18',
         'PORT': '3306',
     }
 }
