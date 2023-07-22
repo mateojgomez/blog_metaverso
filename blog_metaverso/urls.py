@@ -7,7 +7,7 @@ from .views import index
 from .views import registrarse
 from .views import administrar_noticias
 from .views import administrar_categorias
-from apps.noticias.views import AgregarNoticia
+from apps.noticias.views import AgregarNoticia, EliminarNoticia
 #from .views import publicaciones
 
 urlpatterns = [
@@ -19,5 +19,7 @@ urlpatterns = [
    # path('publicaciones/', publicaciones, name= 'publicaciones'),
     path('administrar/noticias',administrar_noticias,name='administrar_noticias'),
     path('administrar/categorias',administrar_categorias,name='administrar_categorias'),
-    path('administrar/noticias/agregar_noticias', AgregarNoticia,name='agregar_noticias')
+    path('administrar/noticias/agregar_noticias', AgregarNoticia,name='agregar_noticias'),
+    path('administrar/noticias/eliminar_noticia/<int:id>/', EliminarNoticia,name='eliminar_noticia')
+    #path('editar_noticias/', FormNoticias)
 ]

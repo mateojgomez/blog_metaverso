@@ -24,6 +24,7 @@
     {{i.fecha}}/
     {{i.categoria}}/
     <a class="btn btn-primary" href="">editar</a>
+    <a class="btn btn-primary" href="{% url 'eliminar_noticia' i.id%}">eliminar</a>
     </li>
     
     {% empty %}
