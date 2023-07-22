@@ -10,17 +10,17 @@ from .views import administrar_categorias
 from apps.noticias.views import agregar_noticias
 
 
-
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/',index , name='index'),
-    path('registrarse/',registrarse, name='registrarse'),
-    #Ceci incluye las paths de las apps
+    path('index/', index, name='index'),
+    path('registrarse/', registrarse, name='registrarse'),
+    # Ceci incluye las paths de las apps
     path('noticias/', include('apps.noticias.urls')),
     path('usuarios/', include('apps.usuarios.urls')),
-    path('administrar/noticias',administrar_noticias,name='administrar_noticias'),
-    path('administrar/categorias',administrar_categorias,name='administrar_categorias'),
-    path('administrar/noticias/agregar_noticias', agregar_noticias ,name='agregar_noticias')
+    path('administrar/noticias', administrar_noticias,
+         name='administrar_noticias'),
+    path('administrar/categorias', administrar_categorias,
+         name='administrar_categorias'),
+    path('administrar/noticias/agregar_noticias',
+         agregar_noticias, name='agregar_noticias')
 ]
