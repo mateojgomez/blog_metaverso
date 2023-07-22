@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 
@@ -11,8 +12,8 @@ class Categoria(models.Model):
     
 #noticias
 class Noticia(models.Model):
-    titulo = models.CharField(max_length=50,verbose_name="Titulo",null=False)
-    contenido = models.TextField(verbose_name="Contenido",null=False)
+    titulo = models.CharField(max_length=50,null=False)
+    contenido = models.TextField(null=False)
     fecha = models.DateTimeField(auto_now_add=True)
     categoria = models.ForeignKey(Categoria,verbose_name="Categoria",on_delete=models.SET_NULL,null=True,default='Sin categoria')
     #imagen = 
