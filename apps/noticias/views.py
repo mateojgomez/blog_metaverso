@@ -1,24 +1,15 @@
-from django.shortcuts import render
-from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from .models import Categoria, Noticia
-#Ceci crea las Clases de vistas
+from django.http import HttpRequest
+from django.shortcuts import render, redirect
+from .forms import FormNoticia
 
-class AgregarCategoria(CreateView):
-    model= Categoria
-    fields=['nombre']
-    template_name='agregar_categoria.html'
-    succes_url = reverse_lazy('inicio')
+def noticia(request):
+    noticias = noticias.objects.all()
+    return render (request, 'agregar_noticias.html',{'noticias': noticias})
 
-
-class AgregarNoticia(CreateView):
-    model= Noticia
-    fields=['titulo','creador','contenido','categoria']
-    template_name='agregar_noticias.html'
-    succes_url = reverse_lazy('inicio')
-
-
-
-def agregar_noticias(request):
-    template_name='agregar_noticias.html'
-    return render(request,template_name)
+def AgregarNoticia(request):
+    formulario = FormNoticia(request.POST or None,request.FILES or None)
+    if formulario.is_valid():
+        formulario.save()
+        return redirect('index')
+    return render(request,'agregar_noticias.html',{'formulario': formulario})
+   

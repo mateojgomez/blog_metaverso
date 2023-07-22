@@ -22,6 +22,24 @@
             style="text-align: center"> 
             Para poder publicar necesitas estar registrado.
         </h5>
+        
+        {% for i in noticias %}
+        
+            <br>
+            <li>{{i.titulo}}/
+            {{i.fecha}}/
+            {{i.categoria}}
+            </li>
+
+            {% empty %}
+            <hi> No hay publicaciones </h1>
+        
+        {% endfor %}
+
+        
+
+
+
     </div>
 </div>
 <section style="margin-top: 10%;">

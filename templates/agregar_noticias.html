@@ -1,26 +1,24 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block titulo %}
-<title>Agregar Noticias</title>
-{% endblock %}
 
-{% block navegacion %}
-{% include 'navegacion.html' %}
-{% endblock %}
 
-{% block contenido %}
-    <div class="card text-bg-dark">
-        <img class="card-img" src="{% static 'img/metaversociudad.jpeg' %}" alt="libreria">
-        <div class="card-img-overlay">
-            <h2
-                style="color: rgb(228, 227, 227); text-align: center; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
-               Formulario para cargar una noticia nueva
-            </h3>
-           <form action="">
-            
-           </form>
-        </div>
+{%block titulo%} Agregar noticia {%endblock%}
+
+{%block contenido%}
+<div class="card">
+    <div class="card-header">
+        Crear una noticia
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos</h4>
+        
+    {% include 'form.html' %}
+
+    </div>
+    <div class="card-footer text-muted">
+        Footer
     </div>
 </div>
 
-{% endblock %}
+{%endblock%}
+

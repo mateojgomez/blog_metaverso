@@ -1,7 +1,9 @@
 from django.shortcuts import render
+from apps.noticias.models import Noticia
 
 def index(request):
-    return render(request,'index.html')
+    noticias = Noticia.objects.all()
+    return render(request,'index.html',{'noticias':noticias})
 
 def registrarse(request):
     return render(request, 'registrarse.html' )
