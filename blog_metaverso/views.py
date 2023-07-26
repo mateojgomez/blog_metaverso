@@ -14,6 +14,7 @@ def administrar_noticias(request):
 def administrar_categorias(request):
     return render(request,'administrar_categorias.html')
 
+
 #def publicaciones(request):
  #   noticias = Noticia.objects.all()
   #  return render(request,'publicaciones.html',{'noticias':noticias})
