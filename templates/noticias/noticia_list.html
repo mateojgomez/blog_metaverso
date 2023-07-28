@@ -10,7 +10,7 @@
 
 {% block contenido %}
 
-<a class="btn btn-primary" href="noticias/agregar_noticias">Agregar noticias</a>
+
 
 <div class="card text-bg-dark">
     <img class="card-img" src="{% static 'img/metaversociudad.jpeg' %}" alt="libreria">
@@ -23,21 +23,9 @@
     <li>{{i.titulo}}</li>
     <li>{{i.fecha}}</li>
     <li>{{i.categoria}}</li>
-    <a class="btn btn-primary" href="{% url 'editar_noticia' i.id %}">editar</a>
-    
-    
-    <button onclick = "borrar({{i.id}})"> Borrar esta noticia</button>
+   
+    <a href = "{% url 'noticia_individual' i.id %}"> ver </a>
 
-    <script>
-        function borrar(id){
-            let desicion = confirm("Deseas borrar esta noticia?");
-            if (desicion){
-                window.location.replace("{% url 'eliminar_noticia' %}?id="+id);
-            }
-        }
-
-    </script>
-    
     {% empty %}
     <hi> No hay publicaciones </h1>
     

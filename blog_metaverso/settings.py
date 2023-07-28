@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     # app usuarios
     'apps.usuarios',
+
 ]
 
 MIDDLEWARE = [

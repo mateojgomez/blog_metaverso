@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %}
+<title>Detalle de noticia</title>
+{% endblock %}
+
+{% block navegacion %}
+{% include 'navegacion.html' %}
+{% endblock %}
+
+{% block contenido %}
+
+<li>{{noticias.titulo}}</li>
+<li>{{noticias.fecha}}</li>
+<li>{{noticias.categoria}}</li>
+<p>{{noticias.contenido}}</p>
+
+
+{% endblock %}
+
