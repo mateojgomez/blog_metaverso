@@ -71,8 +71,8 @@ def AgregarNoticia(request):
     formulario = FormNoticia(request.POST or None,request.FILES or None)
     if formulario.is_valid():
         formulario.save()
-        return redirect('index')
-    return render(request,'agregar_noticias.html',data)
+        return redirect(to= '/administrar/noticias')
+    return render(request,'agregar_noticias.html',{'formulario': formulario})
 
 def EditarNoticia(request,id):
     noticia = get_object_or_404(Noticia, id=id)
