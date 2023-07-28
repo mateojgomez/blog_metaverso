@@ -4,11 +4,14 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib import admin
 from django.urls import path, include
 from .views import index
+from .views import form
 from .views import registrarse
+from .views import recuperar_contraseña
 from .views import administrar_noticias
 from .views import administrar_categorias
 from apps.noticias.views import AgregarNoticia, EliminarNoticia, EditarNoticia
 from apps.noticias.views import NoticiaListView, NoticiaDetailView, NoticiaListViewAdmin
+
 
 urlpatterns = [
     path('', index, name='index'),

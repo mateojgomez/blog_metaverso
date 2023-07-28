@@ -1,10 +1,10 @@
 {% load static %}
-  </nav>
+</nav>
 <nav class="navbar bg-primary" data-bs-theme="dark">
     <div class="container-fluid">
         <a href="{% url 'index' %}">
             <img src="/static/img/logometaverso.jpg" width=200 height=200 alt="Blog Metaverso">
-    </a>
+        </a>
         </a>
         <ul class="nav nav-underline">
             {% if user.is_authenticated %}
@@ -34,7 +34,7 @@
                 </li>
                 {% endif %}
                 <li class="nav-item">
-                    <a class="nav-link"  href="{% url 'noticias:noticias' %}">Ver publicaciones</a>
+                    <a class="nav-link" href="noticias/noticia_individual.html">Ver publicaciones</a>
                 </li>
         </ul>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
