@@ -27,6 +27,17 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL ='usuarios.Usuarios'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smto.EmailBackend'
+EMAIL_HOST = 'smtp@gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'fdrcmnzn1990@gmail.com'
+EMAIL_HOST_PASSWORD = 'atravesdeluniverso'
+
+SITE_NAME = 'BlogMetaverso'
 
 # Application definition
 

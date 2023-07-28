@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<title> {% block title %} Registro de usuario {% endblock title %} </title>
+
+{% block contenido %}
+<center>
+
+    <form method="POST" enctype="multipart/form-data" style = "margin-top:300px: margin-bottom: 100px:">
+        <h1 class="h1">Iniciar sesión</h1>
+        <br>
+        <div class="messages">
+            {% for message in messages %}
+                <table{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</table>
+            {% endfor %}
+
+        </div>
+        <br>
+        {% csrf_token %}
+        <div class="container">
+            <table>{{ form }}</table>
+            <br>
+            <a class="nav-link" href="registrarse/">Registrarse</a>
+            <a class="nav-link" href="'password_reset/'">Olvido su cointraseña?</a>
+            
+            
+            
+            <br><br>
+            <button type="submit" class="btn btn-success btn-lg px-3">Iniciar sesión</button>    
+        </div>
+    </form>
+
+</center>
+{% endblock %}

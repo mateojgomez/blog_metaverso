@@ -1,7 +1,9 @@
+from typing import Any, Dict
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import FormNoticia
-from .models import Noticia
-from django.views.generic import ListView, DetailView
+from .forms import FormNoticia, FormComentario
+from .models import Noticia, Comentario
+from django.views.generic import ListView, DetailView, CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 #def noticia(request):
  #   noticias = noticias.objects.all()
@@ -27,6 +29,39 @@ class NoticiaDetailView(DetailView):
     context_object_name = "noticias"
     pk_url_kwarg = "id"
     queryset = Noticia.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = FormComentario()
+        context['comentarios'] = Comentario.objects.filter(posts_id=self.kwargs['id'])
+        return context
+    
+    def post(self,request,*args,**kwargs):
+        form = FormComentario(request.POST)
+        if form.is_valid():
+            comentario = form.save(commit=False)
+            comentario.usuario = request.user
+            comentario.post_id = self.kwargs['id']
+            comentario.save()
+            return redirect('apps.noticias:noticia_individual',id=self.kwargs['id'])
+        else:
+            context = self.get_context_data(**kwargs)
+            context['form'] = form
+            return self.render_to_response(context)
+        
+
+
+class ComentarioCreateView(LoginRequiredMixin, CreateView):
+    model = Comentario
+    form_class = FormComentario
+    template_name = 'comentario/agregar_comentario.html'
+    succes_url = 'comentario/comentarios/'
+    
+    def form_valid(self, form):
+        form.instance.usuario = self.request.user
+        form.instance.post_id = self.kwargs['posts_id']
+        return super().form_valid(form)
+
 
 def AgregarNoticia(request):
     data = {

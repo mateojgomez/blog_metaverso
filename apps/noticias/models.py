@@ -1,8 +1,6 @@
 from django.db import models
 from django.utils import timezone
-
-# Create your models here.
-
+from django.conf import settings
 
 #categoria
 class Categoria(models.Model):
@@ -16,8 +14,8 @@ class Noticia(models.Model):
     contenido = models.TextField(null=False)
     fecha = models.DateTimeField(auto_now_add=True)
     categoria = models.ForeignKey(Categoria,verbose_name="Categoria",on_delete=models.SET_NULL,null=True,default='Sin categoria')
-    #imagen = 
-    
+    imagen = models.ImageField(null=False, blank=True, upload_to='noticias', default='noticias/noticia-default.png')
+
     
     
     class Meta:
@@ -25,3 +23,15 @@ class Noticia(models.Model):
         
     def __str__(self):
         return self.titulo
+    
+    
+class Comentario(models.Model):
+    posts = models.ForeignKey('noticias.Noticia', on_delete=models.CASCADE,related_name='comentarios')
+    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='comentarios')
+    texto = models.TextField()
+    fecha = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.texto
+
+
