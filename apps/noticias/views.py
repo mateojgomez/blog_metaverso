@@ -10,7 +10,6 @@ def AgregarNoticia(request):
     formulario = FormNoticia(request.POST or None,request.FILES or None)
     if formulario.is_valid():
         formulario.save()
-        return redirect('index')
     return render(request,'agregar_noticias.html',{'formulario': formulario})
 
 def EditarNoticia(request,id_noticia):
