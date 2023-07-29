@@ -3,7 +3,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic import CreateView
 from django.contrib import messages
 from django.shortcuts import redirect
-from django.urls import reverse
+from django.urls import reverse,reverse_lazy
 
 
 class RegistrarUsuario(CreateView):
@@ -17,7 +17,7 @@ class RegistrarUsuario(CreateView):
 
         return redirect('index')
 
-
+'''
 class LoginUsuario(LoginView):
     template_name = 'registration/login.html'
 
@@ -25,6 +25,16 @@ class LoginUsuario(LoginView):
         messages.success(self.request, 'Login exitoso')
 
         return redirect('index')
+'''
+
+class LoginUsuario(LoginView):
+    template_name = 'registration/login.html'
+    success_url = reverse_lazy('index')
+
+    def get_success_url(self):
+        messages.success(self.request, 'Login exitoso')
+        return self.success_url
+
 
 
 class LogoutUsuario(LogoutView):
