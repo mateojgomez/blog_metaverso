@@ -3,11 +3,13 @@ from apps.noticias.models import Noticia
 
 
 def index(request):
-    return render(request, 'index.html')
+    templates_name = 'index.html'
+    return render(request, templates_name)
 
 
-def registrarse(request):
-    return render(request, 'registrarse.html')
+def form(request):
+    templates_name = 'form.html'
+    return render(request, templates_name)
 
 
 def administrar_noticias(request):
@@ -19,8 +21,8 @@ def administrar_categorias(request):
     return render(request, 'administrar_categorias.html')
 
 
-def form(request):
-    return render(request, 'form.html')
+"""def registrarse(request):
+    return render(request, 'registrarse.html')"""
 
 
 def recuperar_contraseña(request):

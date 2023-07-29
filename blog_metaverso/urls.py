@@ -5,7 +5,7 @@ from django.contrib import admin
 from django.urls import path, include
 from .views import index
 from .views import form
-from .views import registrarse
+# from .views import registrarse
 from .views import recuperar_contraseña
 from .views import administrar_noticias
 from .views import administrar_categorias
@@ -18,7 +18,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', index, name='index'),
     path('registrarse/', include('apps.usuarios.urls')),
-    
+
     # Ceci incluye las paths de las apps
     path('noticias/', include('apps.noticias.urls')),
     path('administrar/noticias', administrar_noticias,name='administrar_noticias'),
