@@ -1,20 +1,24 @@
 from .models import Usuarios
-from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.db import transaction
+from django import forms
+from django.contrib.auth import authenticate, login
 
 
-class RegistrarUsuariosForm(UserCreationForm):
+class RegistroUsuarioForm(UserCreationForm):
+
     class Meta:
         model = Usuarios
-        # Puedes agregar más campos aquí si es necesario
-        fields = ['nombre', 'apellido',
-                  'fecha_nacimiento', 'es_colaborador', 'imagen']
+        fields = ['username', 'nombre', 'apellido',
+                  'password', 'email', 'imagen']
 
-    @transaction.atomic
-    def save(self):
-        user = super().save(commit=False)
-        user.is_superuser = False
-        user.is_staff = False
-        user.save()
-        return user
+
+class LoginForm(forms.Form):
+    username = forms.CharField(label='Nombre de usuario')
+    password = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
+
+    def login(self, request):
+        username = self.cleaned_data.get('username')
+        password = self.cleanned_data.get('contraseña')
+        user = authenticate(request, username=username, password=password)
+        if user:
+            login(request, user)

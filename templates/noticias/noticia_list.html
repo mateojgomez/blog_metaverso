@@ -20,11 +20,12 @@
     {% for i in noticias %}
             
     <br>
-    <li>{{i.titulo}}</li>
-    <li>{{i.fecha}}</li>
-    <li>{{i.categoria}}</li>
-   
-    <a href = "{% url 'noticia_individual' i.id %}"> ver </a>
+    <li>{{i.titulo}}</li> <a href = "{% url 'noticia_individual' i.id %}"> ver </a>
+    <p>{{i.fecha}}</p>
+    <p>{{i.categoria}}</p>
+    <img src="{{ i.imagen.url }}" width=200 height=200 alt="">
+    
+
 
     {% empty %}
     <hi> No hay publicaciones </h1>

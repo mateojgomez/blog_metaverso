@@ -17,10 +17,8 @@ urlpatterns = [
     path('', index, name='index'),
     path('admin/', admin.site.urls),
     path('index/', index, name='index'),
-    path('form/', form, name='form'),
-    # path('registrarse/', registrarse, name='registrarse'),
-    path('recuperar_contraseña/', recuperar_contraseña,
-         name='recuperar_contraseña'),
+    path('registrarse/', include('apps.usuarios.urls')),
+
     # Ceci incluye las paths de las apps
     path('noticias/', include('apps.noticias.urls')),
     path('administrar/noticias', administrar_noticias,
@@ -33,10 +31,10 @@ urlpatterns = [
          EliminarNoticia, name='eliminar_noticia'),
     path('administrar/noticias/editar_noticia/<int:id>/',
          EditarNoticia, name='editar_noticia'),
-
-
     path('noticias/<int:id>/', NoticiaDetailView.as_view(),
          name="noticia_individual"),
+    path('', include('django.contrib.auth.urls'))
 
-
-]
+]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
