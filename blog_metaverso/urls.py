@@ -5,7 +5,7 @@ from django.contrib import admin
 from django.urls import path, include
 from .views import index
 from .views import form
-from .views import registrarse
+# from .views import registrarse
 from .views import recuperar_contraseña
 from .views import administrar_noticias
 from .views import administrar_categorias
@@ -18,7 +18,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', index, name='index'),
     path('form/', form, name='form'),
-    path('registrarse/', registrarse, name='registrarse'),
+    # path('registrarse/', registrarse, name='registrarse'),
     path('recuperar_contraseña/', recuperar_contraseña,
          name='recuperar_contraseña'),
     # Ceci incluye las paths de las apps
@@ -37,10 +37,6 @@ urlpatterns = [
 
     path('noticias/<int:id>/', NoticiaDetailView.as_view(),
          name="noticia_individual"),
-
-
-
-    path('accounts/', include('django.contrib.auth.urls')),
 
 
 ]

@@ -1,18 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contenido %}
+<title>Registro</title>
 <form enctype="multipart/form-data" method="post">
-    {% csrf_token  %}
+    {% csrf_token %}
     {% comment %} {%for campo in formulario %}
-        <div class="mb-3">
-            <label for="" class="form-label">{{ campo.label }}:</label>
-            
-            # Dice ceci que para desglosar es formulario.contenido / formulario.titulo y en categoria el label deberia ser distinto
+    <div class="mb-3">
+        <label for="" class="form-label">{{ campo.label }}:</label>
 
-            <input type="{{ campo.field.widget.input_type }}"
-                class="form-control" name="{{ campo.name }}" id="" aria-describedby="helpId" placeholder="{{ campo.label }}" />
-    
-        </div>
+        # Dice ceci que para desglosar es formulario.contenido / formulario.titulo y en categoria el label deberia ser
+        distinto
+
+        <input type="{{ campo.field.widget.input_type }}" class="form-control" name="{{ campo.name }}" id=""
+            aria-describedby="helpId" placeholder="{{ campo.label }}" />
+
+    </div>
     {%endfor%} {% endcomment %}
     {{formulario.as_p}}
 
-<input name="" id="" class="btn btn-success" type="submit" value="Enviar">
+    <input name="" id="" class="btn btn-success" type="submit" value="Enviar">
 
 </form>
+{% endblock %}
