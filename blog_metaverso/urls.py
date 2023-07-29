@@ -27,7 +27,9 @@ urlpatterns = [
     path('administrar/noticias/eliminar_noticia/', EliminarNoticia,name='eliminar_noticia'),
     path('administrar/noticias/editar_noticia/<int:id>/', EditarNoticia, name='editar_noticia'),
     path('noticias/<int:id>/', NoticiaDetailView.as_view(), name = "noticia_individual"),
-    path('',include('django.contrib.auth.urls'))
+    path('',include('django.contrib.auth.urls')),
+    # Comentarios urls
+    path('comentarios/', include('apps.comentarios.urls')),
     
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += staticfiles_urlpatterns()

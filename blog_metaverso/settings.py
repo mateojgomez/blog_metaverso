@@ -54,6 +54,9 @@ INSTALLED_APPS = [
 
     # app usuarios
     'apps.usuarios',
+    
+    #app comentarios
+    'apps.comentarios',
 
 ]
 
@@ -96,7 +99,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'app_blog_metaverso',
         'USER': 'root',
-        'PASSWORD': 'neimon18',
+        'PASSWORD': 'root',
         'PORT': '3306',
     }
 }
