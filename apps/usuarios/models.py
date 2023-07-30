@@ -9,7 +9,7 @@ from django.contrib.auth.models import AbstractUser
 class Usuarios(AbstractUser):
     nombre = models.CharField(max_length=20)
     apellido = models.CharField(max_length=20)
-    fecha_nacimiento = models.DateField('Fecha_nacimiento',null=True,auto_now_add=True)
+    #fecha_nacimiento = models.DateField('Fecha_nacimiento',null=True,auto_now_add=True)
     es_colaborador = models.BooleanField('Es_colaborador', default=False)
     imagen = models.ImageField(null=True, blank=True, upload_to='usuarios', default='usuarios/usuario_def.png')
     # Sugerencia de chatgpt para resolver conflictos

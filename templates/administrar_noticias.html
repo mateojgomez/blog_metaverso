@@ -20,13 +20,15 @@
     {% for i in noticias %}
             
     <br>
-    <li>{{i.titulo}}</li>
-    <li>{{i.fecha}}</li>
-    <li>{{i.categoria}}</li>
-    <a class="btn btn-primary" href="{% url 'editar_noticia' i.id %}">editar</a>
+    <li>{{i.titulo}} <a class="btn btn-primary" href="{% url 'editar_noticia' i.id %}">editar</a> 
+        <button onclick = "borrar({{i.id}})"> Borrar esta noticia</button></li>
+    <img src="{{ i.imagen.url }}" width=200 height=200 alt="">
+    <p>{{i.fecha}} <br>
+    {{i.categoria}}</p>
+    
    
     
-    <button onclick = "borrar({{i.id}})"> Borrar esta noticia</button>
+    
 
     <script>
         function borrar(id){

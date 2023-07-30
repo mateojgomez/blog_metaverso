@@ -17,7 +17,7 @@ class LoginForm(forms.Form):
     
     def login(self, request):
         username = self.cleaned_data.get('username')
-        password = self.cleanned_data.get('contraseña')
+        password = self.cleaned_data.get('password')
         user = authenticate(request, username=username,password=password)
         if user:
             login(request, user)

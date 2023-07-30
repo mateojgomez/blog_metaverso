@@ -10,7 +10,7 @@ app_name = 'apps.usuarios'
 # Ceci en clase utiliza las views como clases
 urlpatterns = [
     path('', views.RegistrarUsuario.as_view(), name='registration/registrar.html'),
-    path('login/', LoginUsuario.as_view(), name= 'login'),
+    path('login/', views.LoginUsuario.as_view(), name= 'login'),
     path('logout/', views.LogoutUsuario.as_view(), name= 'logout'),
     path('registrarse/', views.RegistrarUsuario.as_view(), name = 'registrarse' ),
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),

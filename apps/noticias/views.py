@@ -41,7 +41,7 @@ class NoticiaDetailView(DetailView):
         if form.is_valid():
             comentario = form.save(commit=False)
             comentario.usuario = request.user
-            comentario.post_id = self.kwargs['id']
+            comentario.posts_id = self.kwargs['id']
             comentario.save()
             return redirect('apps.noticias:noticia_individual',id=self.kwargs['id'])
         else:
@@ -59,7 +59,7 @@ class ComentarioCreateView(LoginRequiredMixin, CreateView):
     
     def form_valid(self, form):
         form.instance.usuario = self.request.user
-        form.instance.post_id = self.kwargs['posts_id']
+        form.instance.posts_id = self.kwargs['posts_id']
         return super().form_valid(form)
 
 
