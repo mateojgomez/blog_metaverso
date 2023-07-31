@@ -21,15 +21,15 @@ class RegistrarUsuario(CreateView):
 class LoginUsuario(LoginView):
     template_name = 'registration/login.html'
     
-    def get_succes_url(self):
+    def get_success_url(self):
         messages.success(self.request,'Login exitoso')
      #TODO no redirige   
-        return reverse('apps.usuarios:login')
+        return reverse('index')
     
 class LogoutUsuario(LogoutView):
     template_name = 'registration/logout.html'
 
-    def get_succes_url(self):
+    def get_success_url(self):
         messages.success(self.request, 'Logout exitoso')
 #TODO
-        return reverse('apps.usuarios:logout')
+        return reverse('index')

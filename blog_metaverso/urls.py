@@ -12,14 +12,14 @@ from .views import administrar_categorias
 from apps.noticias.views import AgregarNoticia, EliminarNoticia, EditarNoticia
 from apps.noticias.views import NoticiaListView, NoticiaDetailView, NoticiaListViewAdmin,ComentarioCreateView
 from apps.noticias.models import Comentario
-
+from apps.usuarios.views import LogoutUsuario
 
 urlpatterns = [
     path('', index, name='index'),
     path('admin/', admin.site.urls),
     path('index/', index, name='index'),
     path('usuarios/', include('apps.usuarios.urls')),
-    path('noticias/', include('apps.noticias.urls')),
+    path('noticias/', include('apps.noticias.urls',namespace='noticias')),
     
 
     # Ceci incluye las paths de las apps
@@ -31,6 +31,7 @@ urlpatterns = [
     path('administrar/noticias/editar_noticia/<int:id>/', EditarNoticia, name='editar_noticia'),
     path('noticias/<int:id>/', NoticiaDetailView.as_view(), name = "noticia_individual"),
     path('',include('django.contrib.auth.urls')),
+    
     # Comentarios urls
     
     

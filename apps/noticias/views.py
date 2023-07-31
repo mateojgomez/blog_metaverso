@@ -4,6 +4,7 @@ from .forms import FormNoticia, FormComentario
 from .models import Noticia, Comentario
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse
 
 #def noticia(request):
  #   noticias = noticias.objects.all()
@@ -62,6 +63,27 @@ class ComentarioCreateView(LoginRequiredMixin, CreateView):
         form.instance.usuario = self.request.user
         form.instance.posts_id = self.kwargs['posts_id']
         return super().form_valid(form)
+    
+
+
+
+def EditarComentario(request, id):
+    comentario = get_object_or_404(Comentario, id=id)
+    data = {'form': FormComentario(instance=comentario)}
+   
+    if request.method == 'POST':
+        formulario = FormComentario(data=request.POST, instance=comentario)
+        if formulario.is_valid():
+            formulario.save()
+            
+            noticia_id = comentario.posts.id
+            
+            return redirect(reverse('noticia_individual', kwargs={'id': noticia_id}))
+        data["form"] = formulario
+        
+    return render(request, 'editar_noticia.html', data)
+
+
 
 
 def AgregarNoticia(request):

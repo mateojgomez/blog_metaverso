@@ -24,6 +24,10 @@
         <p>
             {{ comentario.texto }}
         </p>
+        {% if user.is_authenticated and user == comentario.usuario %}
+            <a href="{% url 'noticias:editar_comentario' comentario.id %}" class="btn btn-sm btn-primary">Editar</a>
+        {% endif %}
+
     </ul>
 {% empty %}
 <li>No hay comentarios - Puedes ser el primero en comentar</li>
