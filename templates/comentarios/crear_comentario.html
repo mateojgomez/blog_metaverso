@@ -1,0 +1,12 @@
+<!-- comentarios/templates/comentarios/crear_comentario.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Crear Comentario</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enviar Comentario</button>
+  </form>
+{% endblock %}

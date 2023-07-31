@@ -5,7 +5,7 @@ from django.contrib import admin
 from django.urls import path, include
 from .views import index
 from .views import form
-from .views import registrarse
+# from .views import registrarse
 from .views import recuperar_contraseña
 from .views import administrar_noticias
 from .views import administrar_categorias
@@ -31,8 +31,8 @@ urlpatterns = [
     path('administrar/noticias/editar_noticia/<int:id>/', EditarNoticia, name='editar_noticia'),
     path('noticias/<int:id>/', NoticiaDetailView.as_view(), name = "noticia_individual"),
     path('',include('django.contrib.auth.urls')),
-    path('noticias/<int:id>/comentarios',ComentarioCreateView.as_view(), name = "comentarios"),
-
+    # Comentarios urls
+    path('comentarios/', include('apps.comentarios.urls')),
     
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += staticfiles_urlpatterns()

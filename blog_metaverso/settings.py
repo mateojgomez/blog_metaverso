@@ -22,12 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-a_bbf-619suw3d#9lfaoz8kw!!!m9b3fr)04k_j2^xg8e@bp2%'
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTH_USER_MODEL ='usuarios.Usuarios'
+AUTH_USER_MODEL = 'usuarios.Usuarios'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -54,6 +55,9 @@ INSTALLED_APPS = [
 
     # app usuarios
     'apps.usuarios',
+    
+    #app comentarios
+    'apps.comentarios',
 
 ]
 
@@ -96,7 +100,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'app_blog_metaverso',
         'USER': 'root',
-        'PASSWORD': 'neimon18',
+        'PASSWORD': 'root',
         'PORT': '3306',
     }
 }
