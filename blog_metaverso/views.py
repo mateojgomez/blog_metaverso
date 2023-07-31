@@ -31,3 +31,7 @@ def recuperar_contraseña(request):
 # def publicaciones(request):
  #   noticias = Noticia.objects.all()
   #  return render(request,'publicaciones.html',{'noticias':noticias})
+
+
+def nosotros(request):
+    return render(request, 'nosotros.html')

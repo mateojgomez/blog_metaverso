@@ -10,31 +10,39 @@ from .views import recuperar_contraseña
 from .views import administrar_noticias
 from .views import administrar_categorias
 from apps.noticias.views import AgregarNoticia, EliminarNoticia, EditarNoticia
-from apps.noticias.views import NoticiaListView, NoticiaDetailView, NoticiaListViewAdmin,ComentarioCreateView
+from apps.noticias.views import NoticiaListView, NoticiaDetailView, NoticiaListViewAdmin, ComentarioCreateView
 from apps.noticias.models import Comentario
 from apps.usuarios.views import LogoutUsuario
+from .views import nosotros
 
 urlpatterns = [
     path('', index, name='index'),
     path('admin/', admin.site.urls),
     path('index/', index, name='index'),
     path('usuarios/', include('apps.usuarios.urls')),
-    path('noticias/', include('apps.noticias.urls',namespace='noticias')),
-    
+    path('noticias/', include('apps.noticias.urls', namespace='noticias')),
+
 
     # Ceci incluye las paths de las apps
-   
-    path('administrar/noticias', administrar_noticias,name='administrar_noticias'),
-    path('administrar/categorias',administrar_categorias,name='administrar_categorias'),
-    path('administrar/noticias/agregar_noticias', AgregarNoticia,name='agregar_noticias'),
-    path('administrar/noticias/eliminar_noticia/', EliminarNoticia,name='eliminar_noticia'),
-    path('administrar/noticias/editar_noticia/<int:id>/', EditarNoticia, name='editar_noticia'),
-    path('noticias/<int:id>/', NoticiaDetailView.as_view(), name = "noticia_individual"),
-    path('',include('django.contrib.auth.urls')),
-    
+
+    path('administrar/noticias', administrar_noticias,
+         name='administrar_noticias'),
+    path('administrar/categorias', administrar_categorias,
+         name='administrar_categorias'),
+    path('administrar/noticias/agregar_noticias',
+         AgregarNoticia, name='agregar_noticias'),
+    path('administrar/noticias/eliminar_noticia/',
+         EliminarNoticia, name='eliminar_noticia'),
+    path('administrar/noticias/editar_noticia/<int:id>/',
+         EditarNoticia, name='editar_noticia'),
+    path('noticias/<int:id>/', NoticiaDetailView.as_view(),
+         name="noticia_individual"),
+    path('', include('django.contrib.auth.urls')),
+
     # Comentarios urls
-    
-    
+
+    path('nosotros/', nosotros, name='nosotros'),
+
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
