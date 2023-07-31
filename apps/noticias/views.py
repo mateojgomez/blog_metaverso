@@ -41,9 +41,10 @@ class NoticiaDetailView(DetailView):
         if form.is_valid():
             comentario = form.save(commit=False)
             comentario.usuario = request.user
+            
             comentario.posts_id = self.kwargs['id']
             comentario.save()
-            return redirect('apps.noticias:noticia_individual',id=self.kwargs['id'])
+            return redirect('noticia_individual', id=self.kwargs['id'])
         else:
             context = self.get_context_data(**kwargs)
             context['form'] = form

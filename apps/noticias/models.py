@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.conf import settings
+from apps.usuarios.models import Usuarios
 
 #categoria
 class Categoria(models.Model):

@@ -23,7 +23,7 @@ class LoginUsuario(LoginView):
     
     def get_succes_url(self):
         messages.success(self.request,'Login exitoso')
-        
+     #TODO no redirige   
         return reverse('apps.usuarios:login')
     
 class LogoutUsuario(LogoutView):
@@ -31,5 +31,5 @@ class LogoutUsuario(LogoutView):
 
     def get_succes_url(self):
         messages.success(self.request, 'Logout exitoso')
-
+#TODO
         return reverse('apps.usuarios:logout')

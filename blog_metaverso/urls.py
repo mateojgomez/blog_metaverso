@@ -32,7 +32,7 @@ urlpatterns = [
     path('noticias/<int:id>/', NoticiaDetailView.as_view(), name = "noticia_individual"),
     path('',include('django.contrib.auth.urls')),
     # Comentarios urls
-    path('comentarios/', include('apps.comentarios.urls')),
+    
     
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += staticfiles_urlpatterns()
