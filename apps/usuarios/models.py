@@ -7,6 +7,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 class Usuarios(AbstractUser):
+    #contraseña = models.CharField(max_length=20)
     nombre = models.CharField(max_length=20)
     apellido = models.CharField(max_length=20)
     #fecha_nacimiento = models.DateField('Fecha_nacimiento',null=True,auto_now_add=True)

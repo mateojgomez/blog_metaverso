@@ -8,8 +8,23 @@ class RegistroUsuarioForm(UserCreationForm):
 
     class Meta:
         model = Usuarios
-        fields = ['username', 'nombre', 'apellido',
-                  'password', 'email', 'imagen']
+        fields = ['username', 'nombre', 'apellido', 'email', 'imagen']
+         
+         
+
+
+class ModificarPerfilForm(forms.ModelForm):
+
+    class Meta:
+        model = Usuarios
+        fields = ['username', 'nombre', 'apellido', 'email', 'imagen']
+    #password = forms.Charfield(max_length=200, required=True);
+    #password_new = forms.CharField(max_length=200, required=True);
+    
+    
+         
+    
+
 
 
 class LoginForm(forms.Form):
