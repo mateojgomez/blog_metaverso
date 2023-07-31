@@ -1,9 +1,10 @@
-from .forms import RegistroUsuarioForm
+from .forms import RegistroUsuarioForm,ModificarPerfilForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic import CreateView
 from django.contrib import messages
-from django.shortcuts import redirect
+from django.shortcuts import redirect,render,get_object_or_404
 from django.urls import reverse,reverse_lazy
+from apps.usuarios.models import Usuarios
 
 
 class RegistrarUsuario(CreateView):
@@ -16,6 +17,25 @@ class RegistrarUsuario(CreateView):
         form.save()
 
         return redirect('index')
+
+
+def ModificarPerfil(request,id):
+    usuario = get_object_or_404(Usuarios, id=id)
+    
+    data = {
+        'form':ModificarPerfilForm(instance=usuario)
+    }
+   
+    if request.method == 'POST':
+        formulario = ModificarPerfilForm(data=request.POST, instance=usuario, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('index')
+        data["form"]= formulario
+        
+    return render(request,'modificar_perfil.html', data)
+
+
 
 
 class LoginUsuario(LoginView):

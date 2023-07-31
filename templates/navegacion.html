@@ -18,15 +18,17 @@
                             {{user.username}}
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="">Modificar
+                            <li><a class="dropdown-item" href="{% url 'apps.usuarios:modificar_perfil' user.id %}">Modificar
                                     Perfil</a></li>
                             <li><a class="dropdown-item" href="{% url 'apps.usuarios:logout' %}">Cerrar
                                 sesión</a></li>
                         </ul>
+                    {% if user.es_colaborador %}
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'administrar_noticias' %}">Administrar publicaciones</a>
                     </li>
+                    {% endif %}
                 </ul>
                 {% else %}
                 <li class="nav-item">
@@ -67,11 +69,11 @@
                         Administrador
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'apps.libros:agregar_categoria' %}">Agregar
+                        <li><a class="dropdown-item" href="">Agregar
                                 categoria</a></li>
-                        <li><a class="dropdown-item" href="{% url 'apps.libros:agregar_libro' %}">Agregar
-                                libro</a></li>
-                        <li><a class="dropdown-item" href="{% url 'apps.usuarios:listar_usuarios' %}">Listar
+                        <li><a class="dropdown-item" href="">Agregar
+                                noticia</a></li>
+                        <li><a class="dropdown-item" href="">Listar
                                 usuarios</a></li>
                     </ul>
                 </li>
