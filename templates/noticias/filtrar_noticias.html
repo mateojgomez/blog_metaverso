@@ -1,18 +1,11 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block titulo %}
-<title>Inicio</title>
-{% endblock %}
-{% block navegacion %}
-{% include 'navegacion.html' %}
-{% endblock %}
-{% block contenido %}
-<div class="card text-bg-dark">
-    
-    <img class="card-img" src="{% static 'img/metaverso.png' %}" alt="">
-    <div class="card-img-overlay">
-
-        <h1>Filtrar Noticias</h1>
+<!-- filtrar_noticias.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Filtrar Noticias</title>
+</head>
+<body>
+    <h1>Filtrar Noticias</h1>
     <form method="GET">
         <label for="categoria">Categoría:</label>
         <select name="categoria" id="categoria">
@@ -22,6 +15,8 @@
             {% endfor %}
         </select>
 
+        <label for="fecha">Fecha:</label>
+        <input type="date" name="fecha" id="fecha">
 
         <label for="orden">Orden:</label>
         <select name="orden" id="orden">
@@ -42,22 +37,5 @@
             <li>No hay noticias que coincidan con los filtros seleccionados.</li>
         {% endfor %}
     </ul>
-
-        
-        <h3
-            style="color: rgb(228, 227, 227); text-align: center; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
-            Esta es una aplicación para compartir información sobre el METAVERSO
-        </h3>
-        <h4 style="text-align: center">
-            Encontraras publicaciones relacionadas al tema.
-        </h4>
-        <h5 style="text-align: center">
-            Para poder publicar necesitás estar registrado.
-        </h5>
-
-
-    </div>
-
-
-    </div>
-{% endblock %}
+</body>
+</html>

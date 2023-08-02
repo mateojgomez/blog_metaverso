@@ -10,6 +10,10 @@
 
 {% block contenido %}
 
+<head>
+  <link rel="stylesheet" href="blog_metaverso/static/css/styles.css">
+</head>
+
 
 
 <div class="card text-bg-dark">
@@ -18,20 +22,20 @@
    
     <div class="d-flex flex-wrap">
     {% for i in noticias %}
-    <div class="card m-2" style="width: 18rem;">
+    <div class="card-color m-2 align-items-center" style="width: 18rem;">
         <img src="{{ i.imagen.url }}" class="card-img-top" alt="">
         <div class="card-body">
           <h5 class="card-title">{{i.titulo}}</h5>
-          <p class="card-text">{{i.contenido}}</p>
-        </div>
-        <ul class="list-group list-group-flush">
+          
+        
+        <ul class="list-group-item-color rounded list-group-flush">
           <li class="list-group-item">{{i.fecha}}</li>
           <li class="list-group-item">{{i.categoria}}</li>
-          <li class="list-group-item">A third item</li>
+         
         </ul>
-        <div class="card-body">
+        
           <a href="{% url 'noticia_individual' i.id %}" class="card-link">Ver publicación</a>
-          <a href="#" class="card-link">Another link</a>
+          
         </div>
       </div>       
 

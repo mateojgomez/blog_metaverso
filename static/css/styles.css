@@ -24,3 +24,15 @@ p {
     color: #0B3E82;
     margin-bottom: 20px;
 }
+
+/* Estilos personalizados para la card gris */
+.card-color {
+    background-color: rgba(71, 61, 139, 0.85); /* Aquí puedes ajustar el tono de gris según tus preferencias */
+}
+
+
+
+.list-group-item-color {
+    background-color: rgb(132, 69, 144);
+  }
+

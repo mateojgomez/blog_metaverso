@@ -42,7 +42,7 @@ class LoginUsuario(LoginView):
     template_name = 'registration/login.html'
 
     def get_success_url(self):
-        messages.success(self.request, 'Login exitoso')
+        messages.success(self.request, '')
      # TODO no redirige
         return reverse('index')
 
@@ -51,7 +51,7 @@ class LogoutUsuario(LogoutView):
     template_name = 'registration/logout.html'
 
     def get_success_url(self):
-        messages.success(self.request, 'Logout exitoso')
+        messages.success(self.request, '')
 # TODO
         return reverse('index')
 

@@ -120,6 +120,39 @@ def EliminarNoticia(request,):
     if id: 
         noticia = Noticia.objects.filter(id=id)
         noticia.delete()
-    return redirect(to='administrar_noticias')   
+    return redirect(to='administrar_noticias')
+
+
+def EliminarComentario(request,id):
+    comentario = get_object_or_404(Comentario, id=id)
+    id_post = comentario.posts.id
+    comentario.delete()
+    return redirect('/noticias/' + str(id_post))   
         
-        
+
+
+
+def filtrar_noticias(request):
+    categorias = Categoria.objects.all()
+    noticias_list = Noticia.objects.all()
+
+    categoria_id = request.GET.get('categoria')
+    if categoria_id:
+        noticias_list = noticias_list.filter(categoria_id=categoria_id)
+
+    fecha = request.GET.get('fecha')
+    if fecha:
+        noticias_list = noticias_list.filter(fecha_publicacion__gte=fecha)
+
+    orden = request.GET.get('orden')
+    if orden == 'alfabetico_ascendente':
+        noticias_list = noticias_list.order_by('titulo')
+    elif orden == 'alfabetico_descendente':
+        noticias_list = noticias_list.order_by('-titulo')
+
+    if orden == 'fecha_ascendente':
+        noticias_list = noticias_list.order_by('fecha_publicacion')
+    elif orden == 'fecha_descendente':
+        noticias_list = noticias_list.order_by('-fecha_publicacion')
+
+    return render(request, 'index.html', {'categorias': categorias, 'noticias': noticias_list})

@@ -18,14 +18,24 @@
 
 <img src="{{ noticias.imagen.url }}"  alt="">
 
-{% for comentario in comentarios %}
-    <table>{{ comentario.usuario }} - {{ comentario.fecha }}</table>
-    <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-        <p>
-            {{ comentario.texto }}
-        </p>
+    {% for comentario in comentarios %}
+
+    <div class="card">
+        <div class="card-header">
+        {{ comentario.fecha }}
+        </div>
+        <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <p>{{ comentario.texto }}</p>
+            <footer class="blockquote-footer">{{ comentario.usuario }} <cite title="Source Title"></cite></footer>
+        </blockquote>
+        </div>
+    </div>
+
+    
         {% if user.is_authenticated and user == comentario.usuario %}
             <a href="{% url 'noticias:editar_comentario' comentario.id %}" class="btn btn-sm btn-primary">Editar</a>
+            <a href="{% url 'noticias:eliminar_comentario' comentario.id %}" class="btn btn-sm btn-primary">Borrar</a>
         {% endif %}
 
     </ul>

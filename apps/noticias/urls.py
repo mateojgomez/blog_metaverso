@@ -1,6 +1,6 @@
 from apps.noticias import views
 from django.urls import path
-from apps.noticias.views import EliminarNoticia, ComentarioCreateView,EditarComentario,AgregarNoticia
+from apps.noticias.views import EliminarNoticia, ComentarioCreateView,EditarComentario,AgregarNoticia,EliminarComentario,filtrar_noticias
 from blog_metaverso.views import administrar_noticias
 
 
@@ -14,6 +14,8 @@ urlpatterns = [
     path('agregar_noticias', AgregarNoticia ,name='agregar_noticias'),
     path('eliminar_noticia/', EliminarNoticia,name='eliminar_noticia'),
     path('comentarios/',ComentarioCreateView.as_view(), name = "comentarios"),
-    path('comentario/editar/<int:id>/', EditarComentario, name='editar_comentario')
+    path('comentario/editar/<int:id>/', EditarComentario, name='editar_comentario'),
+    path('eliminar_comentario/<int:id>', EliminarComentario,name='eliminar_comentario'),
+    path('filtrar_noticias/', filtrar_noticias ,name='filtrar_noticias')
     ]
 
