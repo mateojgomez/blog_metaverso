@@ -14,6 +14,8 @@ from apps.noticias.views import NoticiaListView, NoticiaDetailView, NoticiaListV
 from apps.noticias.models import Comentario
 from apps.usuarios.views import LogoutUsuario
 from .views import nosotros
+from . import views
+
 
 urlpatterns = [
     path('', index, name='index'),
@@ -38,9 +40,6 @@ urlpatterns = [
     path('noticias/<int:id>/', NoticiaDetailView.as_view(),
          name="noticia_individual"),
     path('', include('django.contrib.auth.urls')),
-
-    # Comentarios urls
-
     path('nosotros/', nosotros, name='nosotros'),
 
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

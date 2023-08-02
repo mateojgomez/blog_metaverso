@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<title> {% block title %} Contacto {% endblock title %} </title>
+{% block contenido %}
+{% include 'navegacion.html' %}
+
+<div class="card text-bg-dark">
+    <img class="card-img" src="{% static 'img/metaversociudad.jpeg' %}" alt="libreria">
+    <div class="card-img-overlay">
+        <div style="color: black;">
+            <div class=" container">
+                <div style="text-align: center">
+                    <div class="container-fluid">
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <br>
+                            <button type="submit" class="btn btn-success btn-lg px-3">Enviar</button>
+                            <br>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -2,21 +2,25 @@
 {% load static %}
 
 <title> {% block title %} Nosotros {% endblock title %} </title>
-
 {% block contenido %}
+{% include 'navegacion.html' %}
 
-<body>
-    <center>
-        <h1>Sobre Nosotros</h1>
-
-        <p>Nuestro grupo esta conformado por:
-            Mateo
-            Federico
-            Cristian
-            Elizabeth
-        </p>
-
-
-    </center>
-</body>
+<div class="card text-bg-dark">
+    <img class="card-img" src="{% static 'img/metaversociudad.jpeg' %}" alt="libreria">
+    <div class="card-img-overlay">
+        <div class="container-fluid">
+            <h3 style="text-align: center">
+                <br>
+                <li>Mateo</li>
+                <br>
+                <li>Federico</li>
+                <br>
+                <li>Cristian Moreira</li>
+                <br>
+                <li>Elizabeth</li>
+                <br>
+            </h3>
+        </div>
+    </div>
+</div>
 {% endblock %}

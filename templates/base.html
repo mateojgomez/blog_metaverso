@@ -5,6 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!---->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     {% block titulo %}
     {% endblock %}
     <!-- Bootstrap CSS -->
@@ -13,9 +15,11 @@
 </head>
 
 <body class="body">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100&display=swap" rel="stylesheet">
+
     <div>
         {% block navegacion %}
         {% endblock %}
@@ -35,7 +39,7 @@
     <!-- Footer -->
     <footer>
         <div style="margin-top: 5%;" class="card-footer text-body-secondary text-center">
-            <h4> © Copyright | Informatorio 2023 - Comisión 4 </h4>
+            <h6> © Copyright | Informatorio 2023 | Comisión 4 - Grupo 3</h6>
         </div>
     </footer>
 </body>
