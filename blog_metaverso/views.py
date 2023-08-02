@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from apps.noticias.models import Noticia
+from apps.usuarios.models import Contacto
 
 
 def index(request):
@@ -21,13 +22,13 @@ def administrar_categorias(request):
     return render(request, 'administrar_categorias.html')
 
 
-"""def registrarse(request):
-    return render(request, 'registrarse.html')"""
-
-
 def recuperar_contraseña(request):
     return render(request, 'recuperar_contraseña.html')
 
-# def publicaciones(request):
- #   noticias = Noticia.objects.all()
-  #  return render(request,'publicaciones.html',{'noticias':noticias})
+
+def nosotros(request):
+    return render(request, 'nosotros.html')
+
+
+def contacto(request):
+    return render(request, 'contacto.html')

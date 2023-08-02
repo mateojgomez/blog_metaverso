@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<title> {% block title %} Nosotros {% endblock title %} </title>
+{% block contenido %}
+{% include 'navegacion.html' %}
+
+<div class="card text-bg-dark">
+    <img class="card-img" src="{% static 'img/masmetav3.jpg' %}" alt="libreria">
+    <div class="card-img-overlay">
+
+        <div style="color: black;">
+            <div class="container">
+                <br>
+                <h2>Grupo 3 - Comision 4 - Informatorio 2023</h2>
+                <h3 style="text-align: center;">
+                    <div class="container-fluid">
+                        <br>
+                        </i> Mateo Gómez | <i class="fab fa-facebook"> </i>
+                        <br>
+                        <br>
+                        </i> Federico Monzón | <i class="fab fa-twitter"> </i>
+                        <br>
+                        <br>
+                        </i> Cristian Moreira | <i class="fab fa-github"></i> <a
+                            href="https://github.com/moreiracristian" target="_blank">moreiracristian</a>
+                        <br>
+                        <br>
+                        </i> Elizabeth Bénitez | <i class="fab fa-linkedin-in"> </i>
+                        <br>
+                        <br>
+                        <!-- 
+                                PARA AGREGAR SUS REDES: usen>>>     fab fa- (y automaticamente les sale la red que quieran) ejemplos
+    <i class="fab fa-facebook"> </i>
+    <i class="fab fa-twitter"> </i>
+    <i class="fab fa-linkedin"> </i>
+    <i class="fab fa-instagram"> </i>
+    -->
+
+                    </div>
+                </h3>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

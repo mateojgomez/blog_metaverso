@@ -4,31 +4,35 @@
 <title> {% block title %} Registro de usuario {% endblock title %} </title>
 
 {% block contenido %}
-<center>
+{% include 'navegacion.html' %}
 
-    <form method="POST" enctype="multipart/form-data" style = "margin-top:300px: margin-bottom: 100px:">
-        <h1 class="h1">Iniciar sesión</h1>
-        <br>
-        <div class="messages">
-            {% for message in messages %}
-                <table{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</table>
-            {% endfor %}
+<div class="card text-bg-dark">
+    <img class="card-img" src="{% static 'img/metaverso2.webp' %}" alt="libreria">
+    <div class="card-img-overlay">
+
+        <div style="color: black;">
+            <h4 style="text-align: left">
+                <form method="POST" enctype="multipart/form-data" style="margin-top:300px: margin-bottom: 100px:">
+                    <div class="messages">
+                        {% for message in messages %}
+                        <table{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</table>
+                            {% endfor %}
+                    </div>
+                    {% csrf_token %}
+                    <div class="container" style="text-align: center;">
+                        <table>{{ form }}</table>
+                        <br>
+                        <a class="nav-link" href="{% url 'apps.usuarios:registrarse' %}">Registrarse</a>
+                        <a class="nav-link" href="{% url 'apps.usuarios:password_reset' %}">¿Olvidaste tu
+                            contraseña?</a>
+                        <br>
+                        <button type="submit" class="btn btn-success btn-lg px-3">Iniciar sesión</button>
+                    </div>
+                </form>
+            </h4>
 
         </div>
-        <br>
-        {% csrf_token %}
-        <div class="container">
-            <table>{{ form }}</table>
-            <br>
-            <a class="nav-link" href="{% url 'apps.usuarios:registrarse' %}">Registrarse</a>
-            <a class="nav-link" href="{% url 'apps.usuarios:password_reset' %}">Olvido su cointraseña?</a>
-            
-            
-            
-            <br><br>
-            <button type="submit" class="btn btn-success btn-lg px-3">Iniciar sesión</button>    
-        </div>
-    </form>
+    </div>
 
-</center>
-{% endblock %}
+
+    {% endblock %}
