@@ -16,16 +16,24 @@
     <img class="card-img" src="{% static 'img/metaversociudad.jpeg' %}" alt="libreria">
 <div class="card-img-overlay">
    
-    
+    <div class="d-flex flex-wrap">
     {% for i in noticias %}
-            
-    <br>
-    <li>{{i.titulo}}</li> <a href = "{% url 'noticia_individual' i.id %}"> ver </a>
-    <p>{{i.fecha}}</p>
-    <p>{{i.categoria}}</p>
-    <img src="{{ i.imagen.url }}" width=200 height=200 alt="">
-    
-
+    <div class="card m-2" style="width: 18rem;">
+        <img src="{{ i.imagen.url }}" class="card-img-top" alt="">
+        <div class="card-body">
+          <h5 class="card-title">{{i.titulo}}</h5>
+          <p class="card-text">{{i.contenido}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{i.fecha}}</li>
+          <li class="list-group-item">{{i.categoria}}</li>
+          <li class="list-group-item">A third item</li>
+        </ul>
+        <div class="card-body">
+          <a href="{% url 'noticia_individual' i.id %}" class="card-link">Ver publicación</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>       
 
     {% empty %}
     <hi> No hay publicaciones </h1>

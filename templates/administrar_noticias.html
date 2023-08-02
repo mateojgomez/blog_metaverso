@@ -1,4 +1,18 @@
 {% extends 'base.html' %}
+<script>
+            
+            
+  function borrar(id){
+      let desicion = confirm("Deseas borrar esta noticia?");
+      if (desicion){
+          window.location.href="{% url 'eliminar_noticia' %}?id="+id;
+      }
+  }
+
+</script>
+
+
+
 {% load static %}
 {% block titulo %}
 <title>Administrar Noticias</title>
@@ -10,35 +24,43 @@
 
 {% block contenido %}
 
-<a class="btn btn-primary" href="noticias/agregar_noticias">Agregar noticias</a>
+
 
 <div class="card text-bg-dark">
     <img class="card-img" src="{% static 'img/metaversociudad.jpeg' %}" alt="libreria">
 <div class="card-img-overlay">
-   
+
+  <br>
+  
+  <div class="d-grid gap-2 col-6 mx-auto">
+ 
+    <a class="btn btn-secondary" href="{% url 'agregar_noticias' %}" role="button">Agregar publicación</a>
     
+  </div>
+
+  <br>
+   
+    <div class="d-flex flex-wrap">
     {% for i in noticias %}
-            
-    <br>
-    <li>{{i.titulo}} <a class="btn btn-primary" href="{% url 'editar_noticia' i.id %}">editar</a> 
-        <button onclick = "borrar({{i.id}})"> Borrar esta noticia</button></li>
-    <img src="{{ i.imagen.url }}" width=200 height=200 alt="">
-    <p>{{i.fecha}} <br>
-    {{i.categoria}}</p>
     
-   
-    
-    
-
-    <script>
-        function borrar(id){
-            let desicion = confirm("Deseas borrar esta noticia?");
-            if (desicion){
-                window.location.replace("{% url 'eliminar_noticia' %}?id="+id);
-            }
-        }
-
-    </script>
+        <div class="card m-2" style="width: 18rem;">
+            <img src="{{ i.imagen.url }}" class="card-img-top" alt="">
+            <div class="card-body">
+              <h5 class="card-title">{{i.titulo}}</h5>
+              <p class="card-text">{{i.contenido}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">{{i.fecha}}</li>
+              <li class="list-group-item">{{i.categoria}}</li>
+              <li class="list-group-item">{{i.nombre}}</li>
+            </ul>
+            <div class="card-body">
+              <a href="{% url 'noticia_individual' i.id %}" class="card-link">Ver publicación</a>
+              <a href="{% url 'eliminar_noticia' %}?id={{ i.id }}" class="card-link">Borrar publicación</a>
+          </div>
+          
+          </div>     
+          
     
     {% empty %}
     <hi> No hay publicaciones </h1>
