@@ -1,7 +1,8 @@
 from typing import Any, Dict
+from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import FormNoticia, FormComentario
-from .models import Noticia, Comentario
+from .models import Noticia, Comentario, Categoria
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
@@ -22,6 +23,18 @@ class NoticiaListView(ListView):
     model = Noticia
     template_name= " noticias/noticias.html "
     context_object_name = "noticias"
+    
+    def get_queryset(self):
+        categoria_seleccionada = self.request.GET.get('categoria')
+        if categoria_seleccionada:
+            return Noticia.objects.filter(categoria=categoria_seleccionada)
+        return Noticia.objects.all()
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["categorias"] = Categoria.objects.all()
+        return context
+    
 
 
 class NoticiaDetailView(DetailView):
@@ -132,27 +145,4 @@ def EliminarComentario(request,id):
 
 
 
-def filtrar_noticias(request):
-    categorias = Categoria.objects.all()
-    noticias_list = Noticia.objects.all()
 
-    categoria_id = request.GET.get('categoria')
-    if categoria_id:
-        noticias_list = noticias_list.filter(categoria_id=categoria_id)
-
-    fecha = request.GET.get('fecha')
-    if fecha:
-        noticias_list = noticias_list.filter(fecha_publicacion__gte=fecha)
-
-    orden = request.GET.get('orden')
-    if orden == 'alfabetico_ascendente':
-        noticias_list = noticias_list.order_by('titulo')
-    elif orden == 'alfabetico_descendente':
-        noticias_list = noticias_list.order_by('-titulo')
-
-    if orden == 'fecha_ascendente':
-        noticias_list = noticias_list.order_by('fecha_publicacion')
-    elif orden == 'fecha_descendente':
-        noticias_list = noticias_list.order_by('-fecha_publicacion')
-
-    return render(request, 'index.html', {'categorias': categorias, 'noticias': noticias_list})

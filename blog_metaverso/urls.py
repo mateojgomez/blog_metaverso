@@ -18,9 +18,9 @@ from . import views
 
 
 urlpatterns = [
-    path('', index, name='index'),
+    path('', NoticiaListView.as_view(), name='index'),
     path('admin/', admin.site.urls),
-    path('index/', index, name='index'),
+    path('index/', NoticiaListView.as_view(), name='index'),
     path('usuarios/', include('apps.usuarios.urls')),
     path('noticias/', include('apps.noticias.urls', namespace='noticias')),
 

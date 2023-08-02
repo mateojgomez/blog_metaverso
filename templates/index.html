@@ -7,57 +7,7 @@
 {% include 'navegacion.html' %}
 {% endblock %}
 {% block contenido %}
-<div class="card text-bg-dark">
-    
-    <img class="card-img" src="{% static 'img/metaverso.png' %}" alt="">
-    <div class="card-img-overlay">
-
-        <h1>Filtrar Noticias</h1>
-    <form method="GET">
-        <label for="categoria">Categoría:</label>
-        <select name="categoria" id="categoria">
-            <option value="">Todas las categorías</option>
-            {% for categoria in categorias %}
-                <option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
-            {% endfor %}
-        </select>
 
 
-        <label for="orden">Orden:</label>
-        <select name="orden" id="orden">
-            <option value="">Predeterminado</option>
-            <option value="alfabetico_ascendente">Alfabético Ascendente</option>
-            <option value="alfabetico_descendente">Alfabético Descendente</option>
-            <option value="fecha_ascendente">Fecha Ascendente</option>
-            <option value="fecha_descendente">Fecha Descendente</option>
-        </select>
 
-        <button type="submit">Filtrar</button>
-    </form>
-
-    <ul>
-        {% for noticia in noticias %}
-            <li>{{ noticia.titulo }}</li>
-        {% empty %}
-            <li>No hay noticias que coincidan con los filtros seleccionados.</li>
-        {% endfor %}
-    </ul>
-
-        
-        <h3
-            style="color: rgb(228, 227, 227); text-align: center; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
-            Esta es una aplicación para compartir información sobre el METAVERSO
-        </h3>
-        <h4 style="text-align: center">
-            Encontraras publicaciones relacionadas al tema.
-        </h4>
-        <h5 style="text-align: center">
-            Para poder publicar necesitás estar registrado.
-        </h5>
-
-
-    </div>
-
-
-    </div>
 {% endblock %}

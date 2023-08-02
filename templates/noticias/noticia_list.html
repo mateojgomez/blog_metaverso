@@ -11,19 +11,32 @@
 {% block contenido %}
 
 <head>
-  <link rel="stylesheet" href="blog_metaverso/static/css/styles.css">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
-
+<form method="GET">
+  <label for="categoria">Categoría:</label>
+  <select name="categoria" id="categoria">
+      <option value="">Todas las categorías</option>
+      {% for categoria in categorias %}
+          <option value="{{ categoria.nombre }}">{{ categoria.nombre }}</option>
+      {% endfor %}
+  </select>
+  <button type="submit">Filtrar</button>
+</form>
 
 <div class="card text-bg-dark">
-    <img class="card-img" src="{% static 'img/metaversociudad.jpeg' %}" alt="libreria">
+    <img class="card-img" src="{% static 'img/metaversociudad.jpeg' %}" alt="">
 <div class="card-img-overlay">
    
     <div class="d-flex flex-wrap">
     {% for i in noticias %}
     <div class="card-color m-2 align-items-center" style="width: 18rem;">
-        <img src="{{ i.imagen.url }}" class="card-img-top" alt="">
+        
+            <img src="{{ i.imagen.url }}" class="card-img-top" alt="">
+       
+         
+       
         <div class="card-body">
           <h5 class="card-title">{{i.titulo}}</h5>
           
@@ -40,7 +53,7 @@
       </div>       
 
     {% empty %}
-    <hi> No hay publicaciones </h1>
+    <h1> No hay publicaciones </h1>
     
     {% endfor %}
     
@@ -51,4 +64,3 @@
 
 
 {% endblock %}
-
