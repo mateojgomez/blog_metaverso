@@ -61,7 +61,7 @@ def contacto(request):
         form = ContactoForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect(reverse('contacto'))
+        return render(request, 'contacto.html')
     else:
         form = ContactoForm()
     return render(request, 'contacto.html', {'form': form})

@@ -15,7 +15,7 @@
 
 h1 {
     font-size: 36px;
-    color: #0B3E82;
+    color: #ffffff;
     margin-bottom: 20px;
 }
 
@@ -27,12 +27,12 @@ p {
 
 /* Estilos personalizados para la card gris */
 .card-color {
-    background-color: rgba(71, 61, 139, 0.85); /* Aquí puedes ajustar el tono de gris según tus preferencias */
+    background-color: rgba(71, 61, 139, 0.85);
+    /* Aquí puedes ajustar el tono de gris según tus preferencias */
 }
 
 
 
 .list-group-item-color {
     background-color: rgb(132, 69, 144);
-  }
-
+}

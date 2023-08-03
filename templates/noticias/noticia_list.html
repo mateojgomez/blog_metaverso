@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block titulo %}
-<title>Administrar Noticias</title>
-{% endblock %}
+{% block titulo %} <title>Administrar Noticias</title> {% endblock %}
 
 {% block navegacion %}
 {% include 'navegacion.html' %}
@@ -17,10 +15,10 @@
 <form method="GET">
   <label for="categoria">Categoría:</label>
   <select name="categoria" id="categoria">
-      <option value="">Todas las categorías</option>
-      {% for categoria in categorias %}
-          <option value="{{ categoria.nombre }}">{{ categoria.nombre }}</option>
-      {% endfor %}
+    <option value="">Todas las categorías</option>
+    {% for categoria in categorias %}
+    <option value="{{ categoria.nombre }}">{{ categoria.nombre }}</option>
+    {% endfor %}
   </select>
 
   <label for="fecha_orden">Ordenar por fecha:</label>
@@ -41,41 +39,38 @@
 </form>
 
 <div class="card text-bg-dark">
-    <img class="card-img" src="{% static 'img/metaversociudad.jpeg' %}" alt="">
-<div class="card-img-overlay">
-   
+  <img class="card-img" src="{% static 'img/metaversociudad.jpeg' %}" alt="">
+  <div class="card-img-overlay">
+
     <div class="d-flex flex-wrap">
-    {% for i in noticias %}
-    <div class="card-color m-2 align-items-center" style="width: 18rem;">
-        
-            <img src="{{ i.imagen.url }}" class="card-img-top" alt="">
-       
-         
-       
+      {% for i in noticias %}
+      <div class="card-color m-2 align-items-center" style="width: 18rem;">
+
+        <img src="{{ i.imagen.url }}" class="card-img-top" alt="">
+
+
+
         <div class="card-body">
           <h5 class="card-title">{{i.titulo}}</h5>
-          
-        
-        <ul class="list-group-item-color rounded list-group-flush">
-          <li class="list-group-item">{{i.fecha}}</li>
-          <li class="list-group-item">{{i.categoria}}</li>
-         
-        </ul>
-        
+
+
+          <ul class="list-group-item-color rounded list-group-flush">
+            <li class="list-group-item">{{i.fecha}}</li>
+            <li class="list-group-item">{{i.categoria}}</li>
+
+          </ul>
+
           <a href="{% url 'noticia_individual' i.id %}" class="card-link">Ver publicación</a>
-          
+
         </div>
-      </div>       
+      </div>
 
-    {% empty %}
-    <h1> No hay publicaciones </h1>
-    
-    {% endfor %}
-    
-    
+      {% empty %}
+
+      <h1> No hay publicaciones </h1>
+      {% endfor %}
+    </div>
+  </div>
 </div>
 </div>
-</div>
-
-
 {% endblock %}

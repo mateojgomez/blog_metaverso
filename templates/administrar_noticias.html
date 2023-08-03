@@ -1,17 +1,13 @@
 {% extends 'base.html' %}
+
 <script>
-            
-            
-  function borrar(id){
-      let desicion = confirm("Deseas borrar esta noticia?");
-      if (desicion){
-          window.location.href="{% url 'eliminar_noticia' %}?id="+id;
-      }
+  function borrar(id) {
+    let desicion = confirm("Deseas borrar esta noticia?");
+    if (desicion) {
+      window.location.href = "{% url 'eliminar_noticia' %}?id=" + id;
+    }
   }
-
 </script>
-
-
 
 {% load static %}
 {% block titulo %}
@@ -27,51 +23,56 @@
 
 
 <div class="card text-bg-dark">
-    <img class="card-img" src="{% static 'img/metaversociudad.jpeg' %}" alt="libreria">
-<div class="card-img-overlay">
+  <img class="card-img" src="{% static 'img/metaversociudad.jpeg' %}" alt="libreria">
+  <div class="card-img-overlay">
+    <div style="color: black;">
+      <div class=" container">
+        <div style="text-align: center">
+          <div class="container-fluid">
+            <br>
+            <div class="d-grid gap-2 col-3 mx-auto">
 
-  <br>
-  
-  <div class="d-grid gap-2 col-6 mx-auto">
- 
-    <a class="btn btn-secondary" href="{% url 'agregar_noticias' %}" role="button">Agregar publicación</a>
-    
-  </div>
+              <a class="btn btn-secondary" href="{% url 'agregar_noticias' %}" role="button">Agregar publicación</a>
 
-  <br>
-   
-    <div class="d-flex flex-wrap">
-    {% for i in noticias %}
-    
-        <div class="card-color  m-2" style="width: 18rem;">
-            <img src="{{ i.imagen.url }}" class="card-img-top" alt="">
-            <div class="card-body ">
-              <h5 class="card-title">{{i.titulo}}</h5>
-             
-            
-            <ul class="list-group-gris list-group-flush">
-              <li class="list-group-item">{{i.fecha}}</li>
-              <li class="list-group-item">{{i.categoria}}</li>
-             
-            </ul>
-            
-              <a href="{% url 'noticia_individual' i.id %}" class="card-link">Ver publicación</a>
-              <a href="{% url 'eliminar_noticia' %}?id={{ i.id }}" class="card-link">Borrar publicación</a>
+            </div>
+
+
+
+            <div class="d-flex flex-wrap">
+              {% for i in noticias %}
+              <div class="card-color  m-2" style="width: 18rem;">
+                <img src="{{ i.imagen.url }}" class="card-img-top" alt="">
+                <div class="card-body ">
+                  <h5 class="card-title">{{i.titulo}}</h5>
+
+
+                  <ul class="list-group-gris list-group-flush">
+                    <li class="list-group-item">{{i.fecha}}</li>
+                    <li class="list-group-item">{{i.categoria}}</li>
+
+                  </ul>
+
+                  <a href="{% url 'noticia_individual' i.id %}" class="card-link">Ver publicación</a>
+                  <a href="{% url 'eliminar_noticia' %}?id={{ i.id }}" class="card-link">Borrar publicación</a>
+                </div>
+
+              </div>
+
+
+              {% empty %}
+
+              <h1 style="text-align: justify;"> No hay publicaciones </h1>
+
+              {% endfor %}
+
+
+            </div>
           </div>
-          
-          </div>     
-          
-    
-    {% empty %}
-    <hi> No hay publicaciones </h1>
-    
-    {% endfor %}
-    
-    
-</div>
-</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
 {% endblock %}
-
