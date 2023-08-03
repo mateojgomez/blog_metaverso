@@ -1,23 +1,44 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{%block contenido%}
+<title> {% block title %} Agregar Noticias {% endblock title %} </title>
 
-<div class="card">
-    <div class="card-body">
 
-        <div class="row">
-            <div class="col-12 col-md-6 offset-md-3">
+{% block navegacion %}
+{% include 'navegacion.html' %}
 
-                <form action = "" method = "post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ formulario }}
 
-                    <input type ="submit" value ="enviar" class="btn btn-primary">
+<div class="card text-bg-dark">
+    <img class="card-img" src="{% static 'img/metaversociudad.jpeg' %}" alt="libreria">
+    <div class="card-img-overlay">
+        <div style="color: black;">
+            <div class=" container">
+                <div style="text-align: center">
+                    <div class="container-fluid">
+                        <div class="card">
+                            <div class="card-body">
 
+                                <div class="row">
+                                    <div class="col-12 col-md-2 offset-md-4">
+
+                                        <form action="" method="post" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            {{ formulario }}
+                                            <br>
+                                            <br>
+                                            <button type="submit" class="btn btn-success btn-lg px-3">Enviar</button>
+
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
 </div>
 

@@ -1,12 +1,40 @@
 <!-- comentarios/templates/comentarios/crear_comentario.html -->
 
 {% extends 'base.html' %}
+{% load static %}
 
-{% block content %}
-  <h1>Crear Comentario</h1>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Enviar Comentario</button>
-  </form>
+<title> {% block title %} Crear comentario {% endblock title %} </title>
+
+{% block navegacion %}
+{% include 'navegacion.html' %}
+
+
+<div class="card text-bg-dark">
+  <img class="card-img" src="{% static 'img/metaversociudad.jpeg' %}" alt="libreria">
+  <div class="card-img-overlay">
+    <div style="color: black;">
+      <div class=" container">
+        <div style="text-align: center">
+          <div class="container-fluid">
+            <div class="card">
+              <div class="card-body">
+
+                <div class="row">
+                  <div class="col-12 col-md-2 offset-md-4">
+                    <h1>Crear Comentario</h1>
+                    <form method="post">
+                      {% csrf_token %}
+                      {{ form.as_p }}
+                      <button type="submit">Enviar Comentario</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
