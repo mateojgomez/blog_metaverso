@@ -22,6 +22,21 @@
           <option value="{{ categoria.nombre }}">{{ categoria.nombre }}</option>
       {% endfor %}
   </select>
+
+  <label for="fecha_orden">Ordenar por fecha:</label>
+  <select name="fecha_orden" id="fecha_orden">
+    <option value="">No ordenar</option>
+    <option value="ascendente">Mas reciente</option>
+    <option value="descendente">Mas antiguo</option>
+  </select>
+
+  <label for="orden_alfabetico">Ordenar alfabéticamente:</label>
+  <select name="orden_alfabetico" id="orden_alfabetico">
+    <option value="">No ordenar</option>
+    <option value="ascendente">A-Z</option>
+    <option value="descendente">Z-A</option>
+  </select>
+
   <button type="submit">Filtrar</button>
 </form>
 

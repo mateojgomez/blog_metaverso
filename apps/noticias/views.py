@@ -26,14 +26,32 @@ class NoticiaListView(ListView):
     
     def get_queryset(self):
         categoria_seleccionada = self.request.GET.get('categoria')
+        fecha_orden = self.request.GET.get('fecha_orden')
+        orden_alfabetico = self.request.GET.get('orden_alfabetico')
+        
+        noticias = Noticia.objects.all()
+        
         if categoria_seleccionada:
-            return Noticia.objects.filter(categoria=categoria_seleccionada)
-        return Noticia.objects.all()
+            noticias =  Noticia.objects.filter(categoria=categoria_seleccionada)
+
+        if fecha_orden == 'ascendente':
+            noticias = noticias.order_by('fecha')
+        elif fecha_orden == 'descendente':
+            noticias = noticias.order_by('-fecha')
+            
+        if orden_alfabetico == 'ascendente':
+            noticias = noticias.order_by('titulo')
+        elif orden_alfabetico == 'descendente':
+            noticias = noticias.order_by('-titulo')
+
+
+        return noticias
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["categorias"] = Categoria.objects.all()
         return context
+    
     
 
 
