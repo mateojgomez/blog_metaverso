@@ -32,7 +32,9 @@ class NoticiaListView(ListView):
         noticias = Noticia.objects.all()
         
         if categoria_seleccionada:
-            noticias =  Noticia.objects.filter(categoria=categoria_seleccionada)
+            categoria = get_object_or_404(Categoria, nombre=categoria_seleccionada)
+            noticias = Noticia.objects.filter(categoria=categoria)
+
 
         if fecha_orden == 'ascendente':
             noticias = noticias.order_by('fecha')
@@ -158,9 +160,4 @@ def EliminarComentario(request,id):
     comentario = get_object_or_404(Comentario, id=id)
     id_post = comentario.posts.id
     comentario.delete()
-    return redirect('/noticias/' + str(id_post))   
-        
-
-
-
-
+    return redirect('/noticias/' + str(id_post))

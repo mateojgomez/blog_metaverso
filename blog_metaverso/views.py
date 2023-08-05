@@ -32,3 +32,20 @@ def nosotros(request):
 
 def contacto(request):
     return render(request, 'contacto.html')
+
+def index(request):
+    noticias = Noticia.objects.all()
+
+    if request.method == 'POST':
+        formulario = FormNoticia(request.POST, request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to='/administrar/noticias')
+    else:
+        formulario = FormNoticia()
+
+    context = {
+        'noticias': noticias,
+        'formulario': formulario
+    }
+    return render(request, 'index.html', context)
